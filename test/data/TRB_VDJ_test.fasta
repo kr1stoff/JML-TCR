@@ -1,0 +1,35 @@
+>L36092|TRBV1*01|Homo sapiens|P|V-REGION|91723..92006|284 nt|1| | | | |284+42=326| | |
+gatactggaattacccagacaccaaaatacctggtcacagcaatggggagtaaaaggaca
+atgaaacgtgagcatctgggacat........................gattctatgtat
+tggtacagacagaaagctaagaaatccctggagttcatgttttactacaactgt......
+......aaggaattcattgaaaacaagactgtgcca...aatcacttcacacctgaatgc
+cct...gacagctctcgcttataccttcatgtggtcgcactgcagcaagaagactcagct
+gcgtatctctgcaccagcagccaaga
+>L36092|TRBV10-1*01|Homo sapiens|F|V-REGION|214801..215087|287 nt|1| | | | |287+39=326| | |
+gatgctgaaatcacccagagcccaagacacaagatcacagagacaggaaggcaggtgacc
+ttggcgtgtcaccagacttggaaccac.....................aacaatatgttc
+tggtatcgacaagacctgggacatgggctgaggctgatccattactcatatggt......
+......gttcaagacactaacaaaggagaagtctca...gatggctacagtgtctctaga
+tca...aacacagaggacctccccctcactctggagtctgctgcctcctcccagacatct
+gtatatttctgcgccagcagtgagtc
+>AF009660|TRBV10-1*02|Homo sapiens|F|V-REGION|54913..55199|287 nt|1| | | | |287+39=326| | |
+gatgctgaaatcacccagagcccaagacacaagatcacagagacaggaaggcaggtgacc
+ttggcgtgtcaccagacttggaaccac.....................aacaatatgttc
+tggtatcgacaagacctgggacatgggctgaggctgatccattactcatatggt......
+......gttcacgacactaacaaaggagaagtctca...gatggctacagtgtctctaga
+tca...aacacagaggacctccccctcactctggagtctgctgcctcctcccagacatct
+gtatatttctgcgccagcagtgagtc
+>L36092|TRBV10-2*01|Homo sapiens|F|V-REGION|239867..240153|287 nt|1| | | | |287+39=326| | |
+gatgctggaatcacccagagcccaagatacaagatcacagagacaggaaggcaggtgacc
+ttgatgtgtcaccagacttggagccac.....................agctatatgttc
+tggtatcgacaagacctgggacatgggctgaggctgatctattactcagcagct......
+......gctgatattacagataaaggagaagtcccc...gatggctatgttgtctccaga
+tcc...aagacagagaatttccccctcactctggagtcagctacccgctcccagacatct
+gtgtatttctgcgccagcagtgagtc
+>IMGT000021|TRBV10-2*02|Homo sapiens|F|V-REGION|193834..194120|287 nt|1| | | | |287+39=326| | |
+gatgctggaatcacccagagcccaagatacaagatcacagagacaggaaggcaggtgacc
+ttgatgtgtcaccagacttggagccac.....................agctatatgttc
+tggtatcgacaagacctgggacatgggctgaggctgatctattactcagcagct......
+......gctgatattacagataaaggagaagtcccc...gatggctacgttgtctccaga
+tcc...aagacagagaatttccccctcactctggagtcagctacccgctcccagacatct
+gtgtatttctgcgccagcagtgagtc
