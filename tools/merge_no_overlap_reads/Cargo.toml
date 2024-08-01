@@ -1,7 +1,0 @@
-[package]
-name = "merge_no_overlap_reads"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-bio = "1"
