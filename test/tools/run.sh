@@ -1,12 +1,17 @@
-cd /data/mengxf/Project/JML20240730_trb_VDJtools_compare || exit 1
-# 原始 reads 数:  ~3.33M
-# flash 合并成功: ~1.237M (FanYin-T.extendedFrags.fastq)
-/home/mengxf/miniforge3/envs/basic/bin/flash -t 16 -d . -o FanYin-T -m 1 FanYin-T_1.fq.gz FanYin-T_2.fq.gz
-/home/mengxf/miniforge3/envs/python3.8/bin/python /data/mengxf/GitHub/kPyScripts/concat_non_overlap_pe_reads/concat.py merge/FanYin-T.notCombined_1.fastq merge/FanYin-T.notCombined_2.fastq -o FanYin-T.mergedPyNNN.fastq
+cd /data/mengxf/Project/JML20240730_trb_VDJtools_compare || exit
+
+# 合并双端数据
+/home/mengxf/miniforge3/envs/basic/bin/flash -t 16 -d . -o FanYin-T -m 10 FanYin-T_1.fq.gz FanYin-T_2.fq.gz
+/home/mengxf/miniforge3/envs/python3.8/bin/python /data/mengxf/GitHub/kPyScripts/concat_non_overlap_pe_reads/concat.py \
+  -o FanYin-T.mergedPyNNN.fastq \
+  merge/FanYin-T.notCombined_1.fastq merge/FanYin-T.notCombined_2.fastq
+
 # 合并有无 overlap fasta
 cat FanYin-T.mergedPyNNN.fastq FanYin-T.extendedFrags.fastq > FanYin-T.final.fastq
+
 # 转 fasta
 seqkit fq2fa FanYin-T.final.fastq > FanYin-T.final.fasta
+
 # 去重
 seqkit rmdup -j 16 -s -D dup-num-file -o rmdup.fasta merge/FanYin-T.final.fasta
 
@@ -24,3 +29,10 @@ igblastn \
   -num_threads 16 \
   -query ../rmdup/rmdup.fasta \
   -out igblast.output.19
+
+# 保留注释到CDR3的信息
+# shellcheck disable=SC2016
+csvtk -t filter2 -f '$cdr3!=""' igblast.output.19 > igblast.output.19.cdr3
+# 给 output.19 添加num信息
+/home/mengxf/miniforge3/envs/python3.8/bin/python /data/mengxf/GitHub/JML-TCR/tools/add_cdr3_num.py \
+  -i igblast.output.19.cdr3 -d ../rmdup/dup-num.txt

@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+#   6年前最后更新，不好用
+#   使用 IMGT 数据库生成 imseq 数据库. 合并 VDJ Fasta.
+#   [imseq 数据库格式](https://www.imtools.org/fastaFormat/#)
+
 import click
 from Bio import SeqIO
 import re
