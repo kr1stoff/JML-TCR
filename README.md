@@ -5,6 +5,7 @@ NGS TCR 分析项目
 ## 依赖
 
 - click
+- pandas
 
 ## tools
 
@@ -45,9 +46,8 @@ TCR PE150 没有 overlap 的双端 fastq 合并脚本
   ```
 
 ### calc_freq_and_filter.py
-
-使用到的列  
-num v_call d_call j_call cdr3 cdr3_aa
+过滤加过数量的 igblast cdr3 表格, 合并相同 cdr3 的条目  
+使用到的列 num v_call d_call j_call cdr3 cdr3_aa
 
 1. 过滤
     - len(cdr3) < 20, 20 bp 以下的 cdr3 条目
@@ -55,7 +55,6 @@ num v_call d_call j_call cdr3 cdr3_aa
 
    凯杰 PPT 从 cdr3 长度 20bp 开始作图  
    (claude) 对于TCR, TCR β链: 通常在9-15个氨基酸之间
-
 2. 合并
     - vdj 删除等位基因信息 (\*01, \*02)
     - 根据 cdr3 序列合并条目
