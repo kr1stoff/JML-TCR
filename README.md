@@ -13,7 +13,7 @@ NGS TCR 分析项目
 
 TCR PE150 没有 overlap 的双端 fastq 合并脚本
 
-  ```
+  ```bash
   flash -t 16 -d . -o FanYin-T -m 10 FanYin-T_1.fq.gz FanYin-T_2.fq.gz
   
   python concat_non_overlap_pe_reads.py -o FanYin-T.mergedPyNNN.fastq FanYin-T.notCombined_1.fastq FanYin-T.notCombined_2.fastq
@@ -23,7 +23,7 @@ TCR PE150 没有 overlap 的双端 fastq 合并脚本
 
 原始 fastq 数据使用 seqkit rmdup 去重, 经过 igblast 比对后, 再将数量信息添加回去
 
-  ```
+  ```bash
   igblastn \
     -germline_db_V Database/IMGT/2024.07/Homo_sapiens/TR/igblast/human_TRBV.fa \
     -germline_db_D Database/IMGT/2024.07/Homo_sapiens/TR/igblast/human_TRBD.fa \
@@ -58,3 +58,7 @@ TCR PE150 没有 overlap 的双端 fastq 合并脚本
 2. 合并
     - vdj 删除等位基因信息 (\*01, \*02)
     - 根据 cdr3 序列合并条目
+
+   ```bash
+   python calc_freq_and_filter.py add_cdr3_num.txt
+   ```
