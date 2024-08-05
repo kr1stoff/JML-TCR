@@ -5,8 +5,11 @@
       <paths name="10.128.220.227">
         <serverdata>
           <mappings>
-            <mapping deploy="/data/mengxf/GitHub/JML-TCR" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/JML-TCR" local="$PROJECT_DIR$" web="/" />
           </mappings>
+          <excludedPaths>
+            <excludedPath path="/JML-TCR/test/data" />
+          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>
