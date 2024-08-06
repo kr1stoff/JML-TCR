@@ -6,6 +6,8 @@ NGS TCR 分析项目
 
 - click
 - pandas
+- seaborn
+- matplotlib
 
 ## tools
 
@@ -46,6 +48,7 @@ TCR PE150 没有 overlap 的双端 fastq 合并脚本
   ```
 
 ### calc_freq_and_filter.py
+
 过滤加过数量的 igblast cdr3 表格, 合并相同 cdr3 的条目  
 使用到的列 num v_call d_call j_call cdr3 cdr3_aa
 
@@ -53,12 +56,28 @@ TCR PE150 没有 overlap 的双端 fastq 合并脚本
     - len(cdr3) < 20, 20 bp 以下的 cdr3 条目
     - 'N' in cdr3, 含 N 碱基的条目
 
-   凯杰 PPT 从 cdr3 长度 20bp 开始作图  
+   凯杰 PPT 从 cdr3 长度 20bp - 80bp 作图
    (claude) 对于TCR, TCR β链: 通常在9-15个氨基酸之间
 2. 合并
     - vdj 删除等位基因信息 (\*01, \*02)
     - 根据 cdr3 序列合并条目
 
-   ```bash
-   python calc_freq_and_filter.py add_cdr3_num.txt
-   ```
+```bash
+python calc_freq_and_filter.py add_cdr3_num.txt
+```
+
+### cdr3_heatmap.py
+
+根据 cdr3 stats.tsv 文件, 统计 V/J 基因作热图
+
+```bash
+python /data/mengxf/GitHub/JML-TCR/tools/cdr3_heatmap.py stats.tsv
+```
+
+### cdr3_displot.py
+
+根据 cdr3 stats.tsv 文件, 统计 cdr3 长度作分布图
+
+```bash
+python /data/mengxf/GitHub/JML-TCR/tools/cdr3_displot.py stats.tsv
+```

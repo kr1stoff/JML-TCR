@@ -14,8 +14,8 @@ def main(input_file, output):
     df = pd.read_table(input_file, sep='\t', usecols=['num', 'v_call', 'd_call', 'j_call', 'cdr3', 'cdr3_aa'])
     df.fillna('', inplace=True)
 
-    # 过滤 N & 20 < len <= 45
-    df_filter = df[~df['cdr3'].str.contains('N') & (df['cdr3'].str.len() > 20) & (df['cdr3'].str.len() <= 45)]
+    # 过滤 N & 20 <= len <= 80
+    df_filter = df[~df['cdr3'].str.contains('N') & (df['cdr3'].str.len() >= 20) & (df['cdr3'].str.len() <= 80)]
 
     # 合并, 删除等位基因
     def format_vdj_call(gene: str):
