@@ -4,6 +4,8 @@ NGS TCR 分析项目
 
 ## 依赖
 
+Python 3.8.19
+
 - click
 - pandas
 - seaborn
