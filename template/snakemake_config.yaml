@@ -1,0 +1,10 @@
+workdir: /data/mengxf/Project/JML20240806_tcr_pipeline/result/24080701
+samples:
+  - test1
+  - test2
+threads:
+  high: 32
+  low: 16
+software:
+  fastqc: /home/mengxf/miniforge3/envs/basic/bin/fastqc
+  fastp: /home/mengxf/miniforge3/envs/basic/bin/fastp

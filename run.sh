@@ -31,11 +31,12 @@ igblastn \
   -out igblast.output.19
 
 # 保留注释到CDR3的信息
-# shellcheck disable=SC2016
 csvtk -t filter2 -f '$cdr3!=""' igblast.output.19 > igblast.output.19.cdr3
+
 # 给 output.19 添加num信息
 /home/mengxf/miniforge3/envs/python3.8/bin/python /data/mengxf/GitHub/JML-TCR/tools/add_cdr3_num.py \
   -i igblast.output.19.cdr3 -d ../rmdup/dup-num.txt
+
 # 过滤并合并 cdr3 信息表
 /home/mengxf/miniforge3/envs/python3.8/bin/python /data/mengxf/GitHub/JML-TCR/tools/calc_freq_and_filter.py add_cdr3_num.txt
 

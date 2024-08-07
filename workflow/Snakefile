@@ -1,0 +1,16 @@
+######## Config ########
+workdir: config['workdir']
+shell.executable("/bin/bash")
+shell.prefix("set +eu; ")
+
+
+######## Target ########
+rule all:
+  input:
+    expand('1.qc/{sample}.basic.stat.txt',sample=config['samples']),
+    expand('1.qc/{sample}/before', sample=config['samples']),
+
+
+######## Modules ########
+include: 'rules/fastqc.smk'
+include: 'rules/fastp.smk'
