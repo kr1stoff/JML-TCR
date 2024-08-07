@@ -6,10 +6,10 @@ shell.prefix("set +eu; ")
 
 ######## Target ########
 rule all:
-  input:
-    expand('1.qc/{sample}.basic.stat.txt',sample=config['samples']),
-    expand('1.qc/{sample}/before', sample=config['samples']),
-
+    input:
+        expand('1.qc/{sample}.basic.stat.txt',sample=config['samples']),
+        expand('1.qc/{sample}/before',sample=config['samples']),
+        expand('1.qc/{sample}/after',sample=config['samples']),
 
 ######## Modules ########
 include: 'rules/fastqc.smk'
