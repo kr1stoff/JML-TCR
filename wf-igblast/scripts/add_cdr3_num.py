@@ -1,13 +1,5 @@
 #!/usr/bin/env python
-import click
 
-
-@click.command()
-@click.option('-i', '--igblast_out', required=True, type=click.Path(exists=True), help='igblast(outfmt 19) 结果文件.')
-@click.option('-d', '--dup_num_file', required=True, type=click.Path(exists=True),
-              help='seqkit rmdup.smk 去重数量统计文件.')
-@click.option('-o', '--output', default='add_cdr3_num.txt', help='输出 igblast 结果文件, 第一列加上数量信息.')
-@click.help_option('-h', '--help')
 def main(igblast_out, dup_num_file, output):
     """原始 fastq 数据使用 seqkit rmdup.smk 去重, 经过 igblast 比对后, 再将数量信息添加回去"""
 
@@ -35,4 +27,4 @@ def main(igblast_out, dup_num_file, output):
 
 
 if __name__ == '__main__':
-    main()
+    main(snakemake.input[0], snakemake.input[1], snakemake.output[0])

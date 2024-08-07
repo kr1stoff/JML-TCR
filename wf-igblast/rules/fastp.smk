@@ -10,8 +10,8 @@ rule fastp_pe:
         o='1.qc/{sample}.clean.1.fastq',
         O='1.qc/{sample}.clean.2.fastq'
     params:
-        fastp=config['path']['fastp'],
-        prm=config['params']['fastp']
+        fastp=config['software']['fastp'],
+        prm='-q 15 -u 40 -t 0 -G -n 5 -l 15 -y'
     threads:
         config['threads']['low']
     log:
@@ -29,8 +29,8 @@ rule fastp_se:
         h='1.qc/{sample}.html',
         o='1.qc/{sample}.clean.fastq'
     params:
-        fastp=config['path']['fastp'],
-        prm=config['params']['fastp']
+        fastp=config['software']['fastp'],
+        prm='-q 15 -u 40 -t 0 -G -n 5 -l 15 -y'
     threads:
         config['threads']['low']
     log:

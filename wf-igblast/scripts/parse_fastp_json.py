@@ -51,7 +51,7 @@ def parse_json(injson, output):
             clean_n = (clean_n + mean(data['read2_after_filtering']['content_curves']['N'])) / 2
         # 过滤具体统计
         low_quality_reads = int(data['filtering_result']['low_quality_reads'])
-        n_reads = int(data['filtering_result']['too_many_n_reads'])
+        n_reads = int(data['filtering_result']['too_many_N_reads'])
         low_complexity_reads = int(data['filtering_result']['low_complexity_reads'])
         dup_rate = float(data['duplication']['rate']) / 100
         # too_short_reads = int(data['filtering_result']['too_short_reads'])

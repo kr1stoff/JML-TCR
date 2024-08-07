@@ -11,6 +11,10 @@ Python 3.8.19
 - seaborn
 - matplotlib
 
+snakemake 8.16.0
+- pandas
+- plac=1.4.3 
+
 ## tools
 
 ### concat_non_overlap_pe_reads.py
@@ -39,14 +43,14 @@ TCR PE150 没有 overlap 的双端 fastq 合并脚本
     -show_translation \
     -outfmt 19 \
     -num_threads 16 \
-    -query rmdup.fasta \
+    -query rmdup.smk.fasta \
     -out igblast.output.19
 
   # 保留注释到CDR3的信息
   csvtk -t filter2 -f '$cdr3!=""' igblast.output.19 > igblast.output.19.cdr3
   
   # 给 output.19 添加num信息
-  python add_cdr3_num.py -i igblast.output.19.cdr3 -d rmdup/dup-num.txt
+  python add_cdr3_num.py -i igblast.output.19.cdr3 -d rmdup.smk/dup-num.txt
   ```
 
 ### calc_freq_and_filter.py
@@ -65,7 +69,7 @@ TCR PE150 没有 overlap 的双端 fastq 合并脚本
     - 根据 cdr3 序列合并条目
 
 ```bash
-python calc_freq_and_filter.py add_cdr3_num.txt
+python calc_freq_and_filter.py.py add_cdr3_num.txt
 ```
 
 ### cdr3_heatmap.py

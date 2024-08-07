@@ -3,14 +3,19 @@ workdir: config['workdir']
 shell.executable("/bin/bash")
 shell.prefix("set +eu; ")
 
-
 ######## Target ########
 rule all:
     input:
-        expand('1.qc/{sample}.basic.stat.txt',sample=config['samples']),
         expand('1.qc/{sample}/before',sample=config['samples']),
         expand('1.qc/{sample}/after',sample=config['samples']),
+        expand('5.stats/{sample}.stats.tsv',sample=config['samples'])
 
 ######## Modules ########
 include: 'rules/fastqc.smk'
 include: 'rules/fastp.smk'
+include: 'rules/flash.smk'
+include: 'rules/concat.smk'
+include: 'rules/fq2fa.smk'
+include: 'rules/rmdup.smk'
+include: 'rules/igblast.smk'
+include: 'rules/stats.smk'
