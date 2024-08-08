@@ -7,10 +7,10 @@ class MyTestCase(unittest.TestCase):
 
     def test_prepare_fastq_samplesheet_tsv(self):
         samplesheet = '/data/mengxf/GitHub/JML-TCR/template/samplesheet.tsv'
-        # workdir = '/data/mengxf/Project/JML20240806_tcr_pipeline/result/24080801'
+        workdir = '/data/mengxf/Project/JML20240806_tcr_pipeline/result/24080801'
 
         # 软链接 / 解压 fastq
-        # prepare_fastq_by_samplesheet(workdir, samplesheet)
+        prepare_fastq_by_samplesheet(workdir, samplesheet)
 
         self.assertListEqual(
             ['test1', 'test2'],

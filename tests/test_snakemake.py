@@ -7,6 +7,7 @@ from jml_tcr import create_snakemake_configfile
 from jml_tcr import run_snakemake
 from jml_tcr import get_environment_dict
 
+
 class MyTestCase(unittest.TestCase):
     def test_snakemake(self):
         # self.assertEqual(True, False)  # add assertion here
