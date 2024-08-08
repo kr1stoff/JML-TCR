@@ -1,0 +1,4 @@
+germline_db_V: /data/mengxf/Database/IMGT/2024.07/Homo_sapiens/TR/igblast/human_TRBV.fa
+germline_db_D: /data/mengxf/Database/IMGT/2024.07/Homo_sapiens/TR/igblast/human_TRBD.fa
+germline_db_J: /data/mengxf/Database/IMGT/2024.07/Homo_sapiens/TR/igblast/human_TRBJ.fa
+auxiliary_data: /home/mengxf/miniforge3/envs/basic/share/igblast/optional_file/human_gl.aux

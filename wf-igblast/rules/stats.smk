@@ -31,6 +31,6 @@ rule calc_freq_and_filter:
     output:
         '5.stats/{sample}.stats.tsv'
     benchmark:
-        '.log/{sample}.calc_freq_and_filter.py.bm'
+        '.log/{sample}.calc_freq_and_filter.bm'
     script:
         '../scripts/calc_freq_and_filter.py'

@@ -1,3 +1,5 @@
+# snakemake -c 32 -s JML-TCR/wf-igblast/Snakefile --configfile JML-TCR/template/snakemake_config.yaml
+
 ######## Config ########
 workdir: config['workdir']
 shell.executable("/bin/bash")
@@ -8,7 +10,8 @@ rule all:
     input:
         expand('1.qc/{sample}/before',sample=config['samples']),
         expand('1.qc/{sample}/after',sample=config['samples']),
-        expand('5.stats/{sample}.stats.tsv',sample=config['samples'])
+        expand('6.figure/{sample}.displot.png',sample=config['samples']),
+        expand('6.figure/{sample}.heatmap.png',sample=config['samples'])
 
 ######## Modules ########
 include: 'rules/fastqc.smk'
@@ -19,3 +22,6 @@ include: 'rules/fq2fa.smk'
 include: 'rules/rmdup.smk'
 include: 'rules/igblast.smk'
 include: 'rules/stats.smk'
+include: 'rules/plot.smk'
+
+# TODO 生成单样本报告

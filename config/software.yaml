@@ -1,2 +1,6 @@
-activate: /home/mengxf/miniforge3/bin/activate
 flash: /home/mengxf/miniforge3/envs/basic/bin/flash
+fastqc: /home/mengxf/miniforge3/envs/basic/bin/fastqc
+fastp: /home/mengxf/miniforge3/envs/basic/bin/fastp
+seqkit: /home/mengxf/miniforge3/envs/basic/bin/seqkit
+igblast: /home/mengxf/miniforge3/envs/basic/bin/igblastn
+csvtk: /home/mengxf/miniforge3/envs/basic/bin/csvtk

@@ -14,6 +14,8 @@ Python 3.8.19
 snakemake 8.16.0
 - pandas
 - plac=1.4.3 
+- seaborn
+- matplotlib
 
 ## tools
 
