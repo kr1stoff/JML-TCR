@@ -2,8 +2,8 @@ rule rmdup:
     input:
         rules.fq2fa.output
     output:
-        dup_num_file='3.rmdup/{sample}.dup-num.txt',
-        outfile='3.rmdup/{sample}.rmdup.fasta'
+        dup_num_file='{sample}/3.rmdup/dup-num.txt',
+        outfile='{sample}/3.rmdup/rmdup.fasta'
     params:
         seqkit=config['software']['seqkit'],
         params='-s'  # by-seq

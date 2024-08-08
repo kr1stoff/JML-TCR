@@ -4,18 +4,42 @@ from subprocess import run
 import re
 
 
-def prepare_fastq_samplesheet(workdir, samplesheet: str) -> list:
+def prepare_fastq_by_samplesheet(workdir, samplesheet: str) -> None:
     """
     在项目目录下面准备 fastq 文件
     - 如果未压缩 link, 如果压缩 zcat
     - 支持 .tsv 和 .xlsx 格式
-
-    :return:
-    sample_names 样本名列表
     """
     # 创建 {workdir}/.rawdata
     Path(workdir).joinpath('.rawdata').mkdir(exist_ok=True, parents=True)
 
+    df = samplesheet2dataframe(samplesheet)
+
+    # 软链接或解压
+    for row in df.iterrows():
+        name, fastq1, fastq2 = row[1]
+        link_or_zcat_fastq(workdir, name, fastq1, fastq2)
+
+
+def get_sample_names_by_samplesheet(samplesheet: str) -> list:
+    """
+    获取样本名列表
+    :param samplesheet:
+    :return:
+    sample_names 样本名列表
+    """
+    df = samplesheet2dataframe(samplesheet)
+    return df.iloc[:, 0].to_list()
+
+
+def samplesheet2dataframe(samplesheet: str) -> pd.DataFrame:
+    """
+    输入 SampleSheet 转成 DataFrame 格式
+
+    :param samplesheet:
+    :return:
+    df  SampleSheet 转的 DataFrame
+    """
     if samplesheet.endswith('.xlsx'):
         df = pd.read_excel(samplesheet, header=None)
     elif samplesheet.endswith('.tsv'):
@@ -23,15 +47,10 @@ def prepare_fastq_samplesheet(workdir, samplesheet: str) -> list:
     else:
         raise ValueError(f'samplesheet 扩展名必须是 .xlsx or .tsv : {samplesheet}')
 
-    # 检查 samplesheet
+    # 检查 SampleSheet
     check_samplesheet(df)
 
-    # 软链接或解压
-    for row in df.iterrows():
-        name, fastq1, fastq2 = row[1]
-        link_or_zcat_fastq(workdir, name, fastq1, fastq2)
-
-    return df.iloc[:, 0].to_list()
+    return df
 
 
 def link_or_zcat_fastq(workdir, name, fastq1, fastq2) -> None:
@@ -51,7 +70,7 @@ def link_or_zcat_fastq(workdir, name, fastq1, fastq2) -> None:
 
 
 def check_samplesheet(df) -> None:
-    """检查 samplesheet 文件, 输入 samplesheet 转的 DataFrame"""
+    """检查 SampleSheet 文件, 输入 SampleSheet 转的 DataFrame"""
     for row in df.iterrows():
         name, fastq1, fastq2 = row[1]
 

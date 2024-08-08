@@ -2,7 +2,7 @@ from pathlib import Path
 import yaml
 
 
-def get_software_dict():
+def get_software_dict() -> dict:
     """获取软件字典"""
     yaml_soft = Path('__file__').resolve().parent.joinpath('config/software.yaml')
 
@@ -12,7 +12,7 @@ def get_software_dict():
     return dict_soft
 
 
-def get_database_dict():
+def get_database_dict() -> dict:
     """获取数据库字典"""
     yaml_db = Path('__file__').resolve().parent.joinpath('config/database.yaml')
 
@@ -20,3 +20,12 @@ def get_database_dict():
         dict_db = yaml.safe_load(f)
 
     return dict_db
+
+
+def get_environment_dict() -> dict:
+    """获取 Conda 环境字典"""
+    yaml_env = Path('__file__').resolve().parent.joinpath('config/environment.yaml')
+    with open(yaml_env) as f:
+        dict_env = yaml.safe_load(f)
+
+    return dict_env

@@ -8,10 +8,10 @@ shell.prefix("set +eu; ")
 ######## Target ########
 rule all:
     input:
-        expand('1.qc/{sample}/before',sample=config['samples']),
-        expand('1.qc/{sample}/after',sample=config['samples']),
-        expand('6.figure/{sample}.displot.png',sample=config['samples']),
-        expand('6.figure/{sample}.heatmap.png',sample=config['samples'])
+        expand('{sample}/1.qc/before',sample=config['samples']),
+        expand('{sample}/1.qc/after',sample=config['samples']),
+        expand('{sample}/6.figure/displot.png',sample=config['samples']),
+        expand('{sample}/6.figure/heatmap.png',sample=config['samples'])
 
 ######## Modules ########
 include: 'rules/fastqc.smk'

@@ -2,7 +2,7 @@ rule igblast:
     input:
         rules.rmdup.output.outfile
     output:
-        '4.igblast/{sample}.igblast.out19'
+        '{sample}/4.igblast/igblast.out19'
     threads:
         config['threads']['high']
     params:

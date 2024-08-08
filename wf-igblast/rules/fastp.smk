@@ -5,10 +5,10 @@ rule fastp_pe:
         '.rawdata/{sample}.1.fastq',
         '.rawdata/{sample}.2.fastq'
     output:
-        j='1.qc/{sample}.json',
-        h='1.qc/{sample}.html',
-        o='1.qc/{sample}.clean.1.fastq',
-        O='1.qc/{sample}.clean.2.fastq'
+        j='{sample}/1.qc/fastp.json',
+        h='{sample}/1.qc/fastp.html',
+        o='{sample}/1.qc/clean.1.fastq',
+        O='{sample}/1.qc/clean.2.fastq'
     params:
         fastp=config['software']['fastp'],
         prm='-q 15 -u 40 -t 0 -G -n 5 -l 15 -y'
@@ -25,9 +25,9 @@ rule fastp_se:
     input:
         '.rawdata/{sample}.fastq',
     output:
-        j='1.qc/{sample}.json',
-        h='1.qc/{sample}.html',
-        o='1.qc/{sample}.clean.fastq'
+        j='{sample}/1.qc/fastp.json',
+        h='{sample}/1.qc/fastp.html',
+        o='{sample}/1.qc/clean.fastq'
     params:
         fastp=config['software']['fastp'],
         prm='-q 15 -u 40 -t 0 -G -n 5 -l 15 -y'
@@ -42,9 +42,9 @@ rule fastp_se:
 
 rule parse_fastp_json:
     input:
-        '1.qc/{sample}.json'
+        '{sample}/1.qc/fastp.json'
     output:
-        '1.qc/{sample}.basic.stat.txt'
+        '{sample}/1.qc/basic.stat.txt'
     benchmark:
         '.log/{sample}.parse_fastp_json.bm'
     script:

@@ -32,6 +32,7 @@ priority = "primary"
 [tool.pytest.ini_options]
 testpaths = [
     "tests/test_config.py",
-#    "tests/test_fastq.py",
+    "tests/test_fastq.py",
     "tests/test_system_info.py",
+    "tests/test_snakemake.py",
 ]

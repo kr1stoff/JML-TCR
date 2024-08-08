@@ -1,11 +1,11 @@
 rule flash:
     input:
-        '1.qc/{sample}.clean.1.fastq',
-        '1.qc/{sample}.clean.2.fastq'
+        '{sample}/1.qc/clean.1.fastq',
+        '{sample}/1.qc/clean.2.fastq'
     output:
-        not_comb_1='2.merge/{sample}.notCombined_1.fastq',
-        not_comb_2='2.merge/{sample}.notCombined_2.fastq',
-        extended='2.merge/{sample}.extendedFrags.fastq'
+        not_comb_1='{sample}/2.merge/notCombined_1.fastq',
+        not_comb_2='{sample}/2.merge/notCombined_2.fastq',
+        extended='{sample}/2.merge/extendedFrags.fastq'
     params:
         flash=config['software']['flash'],
         params='-m 10'

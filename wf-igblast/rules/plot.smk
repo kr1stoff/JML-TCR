@@ -2,7 +2,7 @@ rule displot:
     input:
         rules.calc_freq_and_filter.output
     output:
-        '6.figure/{sample}.displot.png'
+        '{sample}/6.figure/displot.png'
     benchmark:
         '.log/{sample}.displot.bm'
     script:
@@ -12,7 +12,7 @@ rule heatmap:
     input:
         rules.calc_freq_and_filter.output
     output:
-        '6.figure/{sample}.heatmap.png'
+        '{sample}/6.figure/heatmap.png'
     benchmark:
         '.log/{sample}.heatmap.bm'
     script:

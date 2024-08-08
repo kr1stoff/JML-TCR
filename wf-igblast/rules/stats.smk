@@ -2,7 +2,7 @@ rule filter_cdr3:
     input:
         rules.igblast.output
     output:
-        '5.stats/{sample}.igblast.out19.cdr3'
+        '{sample}/5.stats/igblast.out19.cdr3'
     params:
         csvtk=config['software']['csvtk']
     log:
@@ -19,7 +19,7 @@ rule add_cdr3_num:
         rules.filter_cdr3.output,
         rules.rmdup.output.dup_num_file
     output:
-        '5.stats/{sample}.add_cdr3_num.txt'
+        '{sample}/5.stats/add_cdr3_num.txt'
     benchmark:
         '.log/{sample}.add_cdr3_num.bm'
     script:
@@ -29,7 +29,7 @@ rule calc_freq_and_filter:
     input:
         rules.add_cdr3_num.output
     output:
-        '5.stats/{sample}.stats.tsv'
+        '{sample}/5.stats/stats.tsv'
     benchmark:
         '.log/{sample}.calc_freq_and_filter.bm'
     script:

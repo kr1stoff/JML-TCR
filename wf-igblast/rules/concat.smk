@@ -3,7 +3,7 @@ rule concat:
         rules.flash.output.not_comb_1,
         rules.flash.output.not_comb_2
     output:
-        '2.merge/{sample}.concat.fastq'
+        '{sample}/2.merge/concat.fastq'
     benchmark:
         '.log/{sample}.concat.bm'
     script:
@@ -14,7 +14,7 @@ rule final_cat:
         rules.concat.output,
         rules.flash.output.extended
     output:
-        '2.merge/{sample}.final.fastq'
+        '{sample}/2.merge/final.fastq'
     log:
         '.log/{sample}.final_cat.log'
     benchmark:

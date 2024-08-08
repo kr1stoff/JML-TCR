@@ -2,7 +2,7 @@ rule fq2fa:
     input:
         rules.final_cat.output
     output:
-        '2.merge/{sample}.final.fasta'
+        '{sample}/2.merge/final.fasta'
     params:
         seqkit=config['software']['seqkit']
     threads:

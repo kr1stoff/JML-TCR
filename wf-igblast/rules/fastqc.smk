@@ -6,7 +6,7 @@ rule pre_fastqc_pe:
         '.rawdata/{sample}.1.fastq',
         '.rawdata/{sample}.2.fastq'
     output:
-        directory('1.qc/{sample}/before')
+        directory('{sample}/1.qc/before')
     params:
         fastqc=config['software']['fastqc'],
         prm='--extract'
@@ -26,7 +26,7 @@ rule pre_fastqc_se:
     input:
         '.rawdata/{sample}.fastq'
     output:
-        directory('1.qc/{sample}/before')
+        directory('{sample}/1.qc/before')
     params:
         fastqc=config['software']['fastqc'],
         prm='--extract'
@@ -44,10 +44,10 @@ rule pre_fastqc_se:
 
 rule post_fastqc_pe:
     input:
-        '1.qc/{sample}.clean.1.fastq',
-        '1.qc/{sample}.clean.2.fastq'
+        '{sample}/1.qc/clean.1.fastq',
+        '{sample}/1.qc/clean.2.fastq'
     output:
-        directory('1.qc/{sample}/after')
+        directory('{sample}/1.qc/after')
     params:
         fastqc=config['software']['fastqc'],
         prm='--extract'
@@ -65,9 +65,9 @@ rule post_fastqc_pe:
 
 rule post_fastqc_se:
     input:
-        '1.qc/{sample}.clean.fastq'
+        '{sample}/1.qc/clean.fastq'
     output:
-        directory('1.qc/{sample}/after')
+        directory('{sample}/1.qc/after')
     params:
         fastqc=config['software']['fastqc'],
         prm='--extract'
