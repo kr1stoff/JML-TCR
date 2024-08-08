@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "jml-tcr"
+version = "0.1.0"
+description = "TCR-Seq 分析工具"
+authors = ["Kristoff <kr1stoff7m@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+click = "^8.1.7"
+pandas = "^2.2.2"
+seaborn = "^0.13.2"
+matplotlib = "^3.9.1.post1"
+pytest = "^8.3.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "aliyun"
+url = "https://mirrors.aliyun.com/pypi/simple"
+priority = "default"
+
+[[tool.poetry.source]]
+name = "tsinghua"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
+priority = "primary"
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests/config.py",
+]

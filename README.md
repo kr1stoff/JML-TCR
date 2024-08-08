@@ -4,13 +4,6 @@ NGS TCR 分析项目
 
 ## 依赖
 
-Python 3.8.19
-
-- click
-- pandas
-- seaborn
-- matplotlib
-
 snakemake 8.16.0
 - pandas
 - plac=1.4.3 
