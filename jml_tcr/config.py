@@ -4,19 +4,19 @@ import yaml
 
 def get_software_dict():
     """获取软件字典"""
-    soft_yaml = Path('__file__').resolve().parent.joinpath('config/software.yaml')
+    yaml_soft = Path('__file__').resolve().parent.joinpath('config/software.yaml')
 
-    with open(soft_yaml) as f:
-        soft_dict = yaml.safe_load(f)
+    with open(yaml_soft) as f:
+        dict_soft = yaml.safe_load(f)
 
-    return soft_dict
+    return dict_soft
 
 
 def get_database_dict():
     """获取数据库字典"""
-    db_yaml = Path('__file__').resolve().parent.joinpath('config/database.yaml')
+    yaml_db = Path('__file__').resolve().parent.joinpath('config/database.yaml')
 
-    with open(db_yaml) as f:
-        db_dict = yaml.safe_load(f)
+    with open(yaml_db) as f:
+        dict_db = yaml.safe_load(f)
 
-    return db_dict
+    return dict_db
