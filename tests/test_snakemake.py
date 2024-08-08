@@ -1,5 +1,5 @@
 import unittest
-from jml_tcr import get_threads
+from jml_tcr import get_threads_dict
 from jml_tcr import get_database_dict
 from jml_tcr import get_software_dict
 from jml_tcr import get_sample_names_by_samplesheet
@@ -13,7 +13,7 @@ class MyTestCase(unittest.TestCase):
         # self.assertEqual(True, False)  # add assertion here
         workdir = '/data/mengxf/Project/JML20240806_tcr_pipeline/result/24080801'
         samplesheet = '/data/mengxf/GitHub/JML-TCR/template/samplesheet.xlsx'
-        dict_thr = get_threads()
+        dict_thr = get_threads_dict()
         dict_db = get_database_dict()
         dict_soft = get_software_dict()
         sample_names = get_sample_names_by_samplesheet(samplesheet)

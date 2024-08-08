@@ -8,7 +8,7 @@ from .fastq import prepare_fastq_by_samplesheet
 from .fastq import get_sample_names_by_samplesheet
 
 # threads
-from .system_info import get_threads
+from .system_info import get_threads_dict
 
 # snakemake
 from .snakemake import create_snakemake_configfile
