@@ -19,12 +19,9 @@ def main(fastqs, output):
             if line_count % 4 == 1:
                 head_info1 = line1.split(' ')[0]
                 head_info2 = line2.split(' ')[0]
-
-                if head_info1 != head_info2:
-                    raise Exception(f'FASTQ当前序列不是一对. {head_info1} - {head_info2}')
-                else:
-                    g.write(head_info1 + '\n')
-
+                # 检查双端 fastq 是否配对
+                assert head_info1 == head_info2, f'FASTQ当前序列不是一对. {head_info1} - {head_info2}'
+                g.write(head_info1 + '\n')
             # 序列行
             elif line_count % 4 == 2:
                 g.write(f'{line1.strip()}{"N" * 100}{line2.strip()}\n')

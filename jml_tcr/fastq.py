@@ -91,13 +91,11 @@ def check_samplesheet(df) -> None:
 
         # 检查名称
         pattern = r'[\\/:*?"<>| ]'
+        assert not re.search(pattern, name), f'样本名称含有非法字符 (\\/:*?"<>| ) : {name}'
 
-        if re.search(pattern, name):
-            raise ValueError(f'样本名称含有非法字符 (\\/:*?"<>| ) : {name}')
+        # 检查 fastq 是否存在
+        assert Path(fastq1).exists(), f'fastq1 不存在 : {fastq1}'
+        assert Path(fastq2).exists(), f'fastq2 不存在 : {fastq2}'
 
-        # 检查 fastq 存在
-        if not Path(fastq1).exists():
-            raise FileNotFoundError(f'fastq1 不存在 : {fastq1}')
-
-        if not Path(fastq2).exists():
-            raise FileNotFoundError(f'fastq2 不存在: {fastq2}')
+        # 检查 fastq1 和 fastq2 是否相同
+        assert fastq1 != fastq2, f'fastq1 和 fastq2 相同 : {fastq1} - {fastq2}'
