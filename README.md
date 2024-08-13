@@ -2,11 +2,20 @@
 
 NGS TCR 分析项目
 
+## 命令行
+
+```bash
+poetry run python main.py -i JML-TCR/template/PBMC240805.xlsx -o result/240809_PBMC240805
+
+snakemake -c 32 -s JML-TCR/wf-igblast/Snakefile --configfile JML-TCR/template/snakemake_config.yaml
+```
+
 ## 依赖
 
 snakemake 8.16.0
+
 - pandas
-- plac=1.4.3 
+- plac=1.4.3
 - seaborn
 - matplotlib
 

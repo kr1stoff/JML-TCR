@@ -1,5 +1,3 @@
-# snakemake -c 32 -s JML-TCR/wf-igblast/Snakefile --configfile JML-TCR/template/snakemake_config.yaml
-
 ######## Config ########
 workdir: config['workdir']
 shell.executable("/bin/bash")
