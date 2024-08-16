@@ -7,48 +7,52 @@
 @Motto ：Continuous learning
 @LastModified : 2024/8/12 下午2:17
 """
+import sys
 from pathlib import Path
 import time
-from multiprocessing import Pool
 
 from Bio import SeqIO
 from Bio.Seq import Seq
 
+# 输入梯度信息
+gradient = int(sys.argv[1])
+assert gradient in [1, 3, 4, 5, 6], "稀释梯度必须是 1,3,4,5,6"
+
 # # trb 序列模拟
 # 100% 200k         (total 2.4M)
-num_per_seq = 200000
-gradient = '1_150'
-num_negative_read = 0
-fastq1_negative = ''
-fastq2_negative = ''
+if gradient == 1:
+    num_per_seq = 200000
+    num_negative_read = 0
+    fastq1_negative = ''
+    fastq2_negative = ''
 
 # 10^(-3)   200     (total 2.4M)
-# num_per_seq = 200
-# num_negative_read = 2397600
-# gradient = '103'
-# fastq1_negative = '/data/mengxf/Software/neoimmune/AutoMRD-1.0.1.2024-07-15_release/Rawdata/PBMC240805/NI240729N01-9-46_L2_1.fq.gz'
-# fastq2_negative = '/data/mengxf/Software/neoimmune/AutoMRD-1.0.1.2024-07-15_release/Rawdata/PBMC240805/NI240729N01-9-46_L2_2.fq.gz'
+elif gradient == 3:
+    num_per_seq = 200
+    num_negative_read = 2397600
+    fastq1_negative = '/data/mengxf/Release/neoimmune/AutoMRD-1.0.1.2024-07-15_release/Rawdata/PBMC240805/NI240729N01-9-46_L2_1.fq.gz'
+    fastq2_negative = '/data/mengxf/Release/neoimmune/AutoMRD-1.0.1.2024-07-15_release/Rawdata/PBMC240805/NI240729N01-9-46_L2_2.fq.gz'
 
 # 10^(-4)   20      (total 2.4M)
-# num_per_seq = 20
-# num_negative_read = 2399760
-# gradient = '104'
-# fastq1_negative = '/data/mengxf/Software/neoimmune/AutoMRD-1.0.1.2024-07-15_release/Rawdata/PBMC240805/NI240729N01-9-46_L2_1.fq.gz'
-# fastq2_negative = '/data/mengxf/Software/neoimmune/AutoMRD-1.0.1.2024-07-15_release/Rawdata/PBMC240805/NI240729N01-9-46_L2_2.fq.gz'
+elif gradient == 4:
+    num_per_seq = 20
+    num_negative_read = 2399760
+    fastq1_negative = '/data/mengxf/Release/neoimmune/AutoMRD-1.0.1.2024-07-15_release/Rawdata/PBMC240805/NI240729N01-9-46_L2_1.fq.gz'
+    fastq2_negative = '/data/mengxf/Release/neoimmune/AutoMRD-1.0.1.2024-07-15_release/Rawdata/PBMC240805/NI240729N01-9-46_L2_2.fq.gz'
 
 # 10^(-5)   5     (total 6M)
-# num_per_seq = 5
-# num_negative_read = 5999940
-# gradient = '105'
-# fastq1_negative = '/data/mengxf/Project/JML20240731_trb_synthesized_sequence/fastq/NI240729N01_12M_rename.1.fastq.gz'
-# fastq2_negative = '/data/mengxf/Project/JML20240731_trb_synthesized_sequence/fastq/NI240729N01_12M_rename.2.fastq.gz'
+elif gradient == 5:
+    num_per_seq = 5
+    num_negative_read = 5999940
+    fastq1_negative = '/data/mengxf/Project/JML20240731_trb_synthesized_sequence/fastq/NI240729N01_12M_rename.1.fastq.gz'
+    fastq2_negative = '/data/mengxf/Project/JML20240731_trb_synthesized_sequence/fastq/NI240729N01_12M_rename.2.fastq.gz'
 
 # 10^(-6)   1     (total 12M)
-# num_per_seq = 1
-# num_negative_read = 11999988
-# gradient = '106'
-# fastq1_negative = '/data/mengxf/Project/JML20240731_trb_synthesized_sequence/fastq/NI240729N01_12M_rename.1.fastq.gz'
-# fastq2_negative = '/data/mengxf/Project/JML20240731_trb_synthesized_sequence/fastq/NI240729N01_12M_rename.2.fastq.gz'
+elif gradient == 6:
+    num_per_seq = 1
+    num_negative_read = 11999988
+    fastq1_negative = '/data/mengxf/Project/JML20240731_trb_synthesized_sequence/fastq/NI240729N01_12M_rename.1.fastq.gz'
+    fastq2_negative = '/data/mengxf/Project/JML20240731_trb_synthesized_sequence/fastq/NI240729N01_12M_rename.2.fastq.gz'
 
 # main
 outdir = Path(f'/data/mengxf/Project/JML20240731_trb_synthesized_sequence/fastq/{gradient}')

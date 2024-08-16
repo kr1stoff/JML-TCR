@@ -1,6 +1,7 @@
 # JML-TCR
 
-NGS TCR 分析项目
+NGS TCR 分析项目  
+<font color=red>推荐单端测序 (400bp以上) 或 `PE300`, TRB 序列中有没有 overlap (有gap) 分析会失败</font>  
 
 ## 命令行
 
