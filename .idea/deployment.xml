@@ -7,9 +7,6 @@
           <mappings>
             <mapping deploy="/JML-TCR" local="$PROJECT_DIR$" web="/" />
           </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/waste" />
-          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

@@ -6,7 +6,7 @@ import pandas as pd
 def main(input_file, output):
     """过滤加过数量的 igblast cdr3 表格, 合并相同 cdr3 的条目"""
     # 使用到的列 num v_call d_call j_call cdr3 cdr3_aa
-    df = pd.read_table(input_file, sep='\t', usecols=['num', 'v_call', 'd_call', 'j_call', 'cdr3', 'cdr3_aa'])
+    df = pd.read_table(input_file, sep='\t', usecols=['num', 'v_call', 'd_call', 'j_call', 'cdr3', 'cdr3_aa'], dtype=str)
     df.fillna('', inplace=True)
 
     # 过滤 N & 20 <= len <= 80
@@ -31,18 +31,19 @@ def main(input_file, output):
         jc = format_vdj_call(row[1]['j_call'])
         cdr3aa = row[1]['cdr3_aa']
 
-        cdr3_dict.setdefault(cdr3, {})
-        cdr3_dict[cdr3].setdefault('cdr3', cdr3)
-        cdr3_dict[cdr3].setdefault('cdr3aa', cdr3aa)
-        cdr3_dict[cdr3].setdefault('vc', vc)
-        cdr3_dict[cdr3].setdefault('dc', dc)
-        cdr3_dict[cdr3].setdefault('jc', jc)
-        cdr3_dict[cdr3].setdefault('num', num)
-
-        cdr3_dict[cdr3]['vc'] = list(set(cdr3_dict[cdr3]['vc'] + vc))
-        cdr3_dict[cdr3]['num'] += num
-        cdr3_dict[cdr3]['dc'] = list(set(cdr3_dict[cdr3]['dc'] + dc))
-        cdr3_dict[cdr3]['jc'] = list(set(cdr3_dict[cdr3]['jc'] + jc))
+        if cdr3 not in cdr3_dict:
+            cdr3_dict.setdefault(cdr3, {})
+            cdr3_dict[cdr3].setdefault('cdr3', cdr3)
+            cdr3_dict[cdr3].setdefault('cdr3aa', cdr3aa)
+            cdr3_dict[cdr3].setdefault('vc', vc)
+            cdr3_dict[cdr3].setdefault('dc', dc)
+            cdr3_dict[cdr3].setdefault('jc', jc)
+            cdr3_dict[cdr3].setdefault('num', num)
+        else:
+            cdr3_dict[cdr3]['vc'] = list(set(cdr3_dict[cdr3]['vc'] + vc))
+            cdr3_dict[cdr3]['num'] += num
+            cdr3_dict[cdr3]['dc'] = list(set(cdr3_dict[cdr3]['dc'] + dc))
+            cdr3_dict[cdr3]['jc'] = list(set(cdr3_dict[cdr3]['jc'] + jc))
 
         total_num += num
 
