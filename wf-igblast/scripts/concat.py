@@ -4,7 +4,15 @@ def main(fastqs, output):
     """
     TCR PE150 没有 overlap 的双端 FASTQ 合并脚本.
 
-    例子: python concat.py test_1.fq test_2.fq -o concat.fastq
+    :param fastqs:  read1/2 FASTQ 文件
+    :param output:  输出合并后 FASTQ 文件
+
+    ```bash
+    flash -t 16 -d . -o FanYin-T -m 10 FanYin-T_1.fq.gz FanYin-T_2.fq.gz
+
+    python concat_non_overlap_pe_reads.py -o FanYin-T.mergedPyNNN.fastq \
+        FanYin-T.notCombined_1.fastq FanYin-T.notCombined_2.fastq
+    ```
     """
     input1, input2 = fastqs
     line_count = 0

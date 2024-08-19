@@ -4,9 +4,30 @@ import pandas as pd
 
 
 def main(input_file, output):
-    """过滤加过数量的 igblast cdr3 表格, 合并相同 cdr3 的条目"""
+    """
+    过滤加过数量的 igblast cdr3 表格, 合并相同 cdr3 的条目
+    使用到的列 num v_call d_call j_call cdr3 cdr3_aa
+
+    :param input_file:  输入 igblast cdr3 表格
+    :param output:      输出 stats 统计表格
+
+    1. 过滤
+        - len(cdr3) < 20, 20 bp 以下的 cdr3 条目
+        - 'N' in cdr3, 含 N 碱基的条目
+
+       凯杰 PPT 从 cdr3 长度 20bp - 80bp 作图
+       (claude) 对于TCR, TCR β链: 通常在9-15个氨基酸之间
+    2. 合并
+        - vdj 删除等位基因信息 (*01, *02)
+        - 根据 cdr3 序列合并条目
+
+    ```bash
+    python calc_freq_and_filter.py.py add_cdr3_num.txt
+    ```
+    """
     # 使用到的列 num v_call d_call j_call cdr3 cdr3_aa
-    df = pd.read_table(input_file, sep='\t', usecols=['num', 'v_call', 'd_call', 'j_call', 'cdr3', 'cdr3_aa'], dtype=str)
+    df = pd.read_table(input_file, sep='\t', usecols=['num', 'v_call', 'd_call', 'j_call', 'cdr3', 'cdr3_aa'],
+                       dtype=str)
     df.fillna('', inplace=True)
 
     # 过滤 N & 20 <= len <= 80
