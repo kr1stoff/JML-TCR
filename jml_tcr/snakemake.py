@@ -45,7 +45,7 @@ def run_snakemake(dict_env: dict, dict_thr: dict, workdir: str) -> None:
     activate = dict_env['activate']
     snakemake = dict_env['snakemake']
     cores = dict_thr['high']
-    snakefile = Path('__file__').resolve().parent.joinpath('wf-igblast/Snakefile')
+    snakefile = Path(__file__).resolve().parent.joinpath('wf-igblast/Snakefile')
     configfile = f'{workdir}/snakemake_config.yaml'
 
     cml = f"""
