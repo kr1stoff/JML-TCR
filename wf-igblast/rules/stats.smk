@@ -9,7 +9,6 @@ rule filter_cdr3:
         '.log/{sample}.filter_cdr3.log'
     benchmark:
         '.log/{sample}.filter_cdr3.bm'
-    # TODO
     shell:
         """
         {params.csvtk} -t filter2 -f '$cdr3!=""' {input} > {output} 2> {log}

@@ -27,7 +27,6 @@ logging.basicConfig(level=logging.DEBUG,
 @click.command()
 @click.option('-i', '--samplesheet', type=click.Path(exists=True),
               help='样本表, 支持 .tsv 和 .xlsx . 格式: "name fq1 fq2"')
-# TODO 支持直接输入 bcl2fastq 拆分后的 fastq 文件夹
 # @click.option('-I', '--fastq_dir', type=click.Path(exists=True),
 #               help='Illumina bcl2fastq 拆分后的 fastq 目录, 按照文件名分配样本名称.')
 @click.option('-o', '--workdir', default='tcr_analysis', help='结果输出目录.')
@@ -45,8 +44,6 @@ def main(samplesheet, workdir):
     run_snakemake(dict_env, dict_thr, workdir)
     logging.info('分析结束')
 
-
-# TODO 组间分析 和 CDR3 追踪分析
 
 if __name__ == '__main__':
     main()
